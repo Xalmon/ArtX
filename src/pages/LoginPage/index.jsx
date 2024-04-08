@@ -47,7 +47,7 @@ const LoginPage = () => {
            </select>
             </div>
               
-            <Button sx={{mt:5,fontSize:"2.5rem",backgroundColor:"rgb(68, 71, 70)", width:"400px",marginLeft:"32%",borderRadius:"5px"}} fullWidth type='submit' variant='contained'>Register</Button>
+            <Button sx={{mt:5,fontSize:"2.5rem",backgroundColor:"rgb(68, 71, 70)", width:"400px",marginLeft:"32%",borderRadius:"5px",color:"white"}} fullWidth type='submit' variant='contained'>Login</Button>
 
             </Form>
 </Formik>

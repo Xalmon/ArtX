@@ -10,7 +10,7 @@
 .second{
     background-color:   rgb(242, 242, 242);;
     height: 1085px;
-    width: 1200px;
+    width: 1100px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -54,7 +54,7 @@
 
 }
 .image{
-    width: 900px;
-    height: 600px;
+    width: 1000px;
+    height: 1090px;
 }
 
