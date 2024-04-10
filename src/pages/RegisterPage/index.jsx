@@ -5,12 +5,16 @@ import { Field, Form, Formik } from 'formik'
 import { Box, Button, TextField, Typography,InputAdornment,IconButton } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Validation from "../../validation/validation"
+import { useNavigate } from "react-router-dom";
+
 
 
 
 
 const RegisterPage = () => {
    const [showPassword, setShowPassword] = useState(false);
+
+   const navigate = useNavigate()
   
    const handleClickShowPassword = () => {
       setShowPassword(!showPassword);
@@ -59,7 +63,7 @@ const RegisterPage = () => {
 
          <div  className={style.suggestion}>
             <h1>
-               Already Have An Account <span style={{color: "Brown", marginLeft: "40px"}}>Sign in </span> 
+               Already Have An Account <span onClick={()=>navigate('/user/login')} style={{color: "Brown", marginLeft: "40px",cursor:"pointer"}}>Sign in </span> 
             </h1>
            </div>
            

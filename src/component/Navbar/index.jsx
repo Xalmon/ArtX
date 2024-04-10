@@ -10,27 +10,31 @@ const Navbar = () => {
   return (
     <div>
     <div className={style.main}>
-      <div className={style.logo}>
-        <p>ART<span>XPRESS</span> </p>
-
-      </div>
+    <div style={{display:"flex",backgroundColor:"white",width:"320px",padding:"20px",marginTop:"30px"}}>
+                <h1 className={style.art}>
+                    ART
+                </h1>
+                <h1  className={style.exp}>
+                    XPRESS
+                </h1>
+            </div>
       <div className={style.contain}>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             HOME
           </h1>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             MARKETPLACE
           </h1>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             ARTISTS
           </h1>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             ABOUT
           </h1>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             BLOG
           </h1>
-          <h1>
+          <h1 style={{cursor:"pointer"}}>
             EXHIBITION
           </h1>
         </div>

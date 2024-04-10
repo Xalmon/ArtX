@@ -5,11 +5,13 @@ import { Field, Form, Formik } from 'formik'
 import { Box, Button, TextField, Typography,InputAdornment,IconButton } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Validation from "../../validation/validation"
+import { useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
   
     const handleClickShowPassword = () => {
        setShowPassword(!showPassword);
@@ -39,13 +41,13 @@ const LoginPage = () => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
               >  {showPassword ? <Visibility /> : <VisibilityOff />} </IconButton>
-           <div>
+           {/* <div>
            <select className={style.paste} type="text" id="text" name="text" placeholder='Enter your firstName' required >
            <option value={""}>Select a role to register as</option>
            <option value={"ROLE_COLLECTOR"}>ROLE_COLLECTOR</option>
            <option value={"ROLE_ARTSTUDIO_OWNER"}>ROLE_ARTSTUDIO_OWNER</option>
            </select>
-            </div>
+            </div> */}
               
             <Button sx={{mt:5,fontSize:"2.5rem",backgroundColor:"rgb(68, 71, 70)", width:"400px",marginLeft:"32%",borderRadius:"5px",color:"white"}} fullWidth type='submit' variant='contained'>Login</Button>
 
@@ -55,7 +57,7 @@ const LoginPage = () => {
 
          <div  className={style.suggestion}>
             <h1>
-               Don,t have an Account <span style={{color: "Brown", marginLeft: "40px"}}>Sign up </span> 
+               Don,t have an Account <span onClick={()=>navigate('/user/register')} style={{color: "Brown", marginLeft: "40px",cursor:"pointer"}}>Sign up </span> 
             </h1>
            </div>
            

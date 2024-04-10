@@ -3,8 +3,9 @@
     background-color: rgb(68, 71, 70);
     color: white;
     padding: 10px ;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 30px;
 }
 .exp{
     font-size: 35px;
@@ -20,4 +21,26 @@
 .main{
     margin-top: 190px;
     background-color:rgb(68, 71, 70) ;
+    height: 700px;
+}
+.lc{
+    font-size: 50px;
+    color: white;
+    font-weight: 1000;
+    font-family: Georgia, serif;
+}
+
+.way{
+    font-size: 50px;
+    color: white;
+    font-family: Georgia, serif;
+    opacity: 0.9;
+
+}
+.contain{
+    display: flex;
+   gap: 10%;
+   margin-left: 370px;
+   position: relative;
+   top: 250px;
 }
