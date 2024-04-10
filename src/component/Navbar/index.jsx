@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div>
     <div className={style.main}>
-    <div style={{display:"flex",backgroundColor:"white",width:"320px",padding:"20px",marginTop:"30px"}}>
+    <div style={{display:"flex",backgroundColor:"white",width:"320px",padding:"20px",marginTop:"30px",marginLeft:"50px"}}>
                 <h1 className={style.art}>
                     ART
                 </h1>
