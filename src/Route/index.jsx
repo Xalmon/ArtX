@@ -12,6 +12,7 @@ import SideBar from '../dashBoard/UserDashBoard/SideBar'
 import SideBars from '../dashBoard/ArtstudioDashboard/SideBar'
 import IconSideBars from '../dashBoard/ArtstudioDashboard/IconSideBars'
 import IconSideBar from '../dashBoard/UserDashBoard/IconSideBar'
+import ArtStudioDetails from '../HeroTwo/ArtStudio/UserViewArtStudio/ArtStudioDetails'
 
 
 
@@ -88,6 +89,10 @@ export const Routes = [
             {
                 path: "/iconSidebar",
                 element: <IconSideBars/>
+            },
+            {
+                path: "/artStudioDetails",
+                element: <ArtStudioDetails/>
             },
 
 
