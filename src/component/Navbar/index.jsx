@@ -50,7 +50,7 @@ const Navbar = () => {
            <div className={style.modal}>
             <img src={sculpture} alt="" className={style.image}/>
             <div className={style.head}>
-              User must be LogedIn to Access Cart
+              User must be LoggedIn to Access Cart
             </div>
             <div className={style.click}>
               Click the Button Below to Login
