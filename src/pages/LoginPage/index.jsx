@@ -3,15 +3,30 @@ import style from './index.module.css'
 import image from "../../assets/images/naked.png"
 import { Field, Form, Formik } from 'formik'
 import { Box, Button, TextField, Typography,InputAdornment,IconButton } from '@mui/material'
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Password, Visibility, VisibilityOff } from '@mui/icons-material';
 import Validation from "../../validation/validation"
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux"
+import { loginUser } from '../../component/state/Authentication/Action'
+
+const initialValues = {
+   email:"",
+   password:""
+}
 
 
 const LoginPage = () => {
+   const navigate = useNavigate()
+   const dispatch = useDispatch()
+
+   const handleSubmit = (values) =>{
+      dispatch(loginUser({userData:values,navigate}))
+      console.log(values)
+
+   }
 
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate()
+   
   
     const handleClickShowPassword = () => {
        setShowPassword(!showPassword);
@@ -29,11 +44,30 @@ const LoginPage = () => {
         <div className={style.second}>
             <h1 className={style.login}>LOGIN</h1>
          <div className={style.form}>
-         <Formik >
+         <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+         {({ values, handleChange, handleBlur }) => (
             <Form  >
-           <input className={style.paste} type="email" id="text" name="email" placeholder='Enter your email' required />
+           <input className={style.paste}
+            type="email" 
+            id="email" 
+            name="email"  
+            placeholder='Enter your email' 
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            required 
 
-           <input className={style.paste} type={showPassword ? "text" : "password"}  id="text" name="password" placeholder='Enter a password' required  
+            />
+
+           <input className={style.paste} 
+           type={showPassword ? "text" : "password"}  
+           id="text" 
+           name="password" 
+           placeholder='Enter a password' 
+           value={values.password}
+           onChange={handleChange}
+           onBlur={handleBlur}
+           required  
            />
             <IconButton
                 sx={{color:"black",position:"relative",right:"50px",fontSize:"2.5rem"}}
@@ -52,12 +86,13 @@ const LoginPage = () => {
             <Button sx={{mt:5,fontSize:"2.5rem",backgroundColor:"rgb(68, 71, 70)", width:"400px",marginLeft:"32%",borderRadius:"5px",color:"white"}} fullWidth type='submit' variant='contained'>Login</Button>
 
             </Form>
+             )}
 </Formik>
          </div>
 
          <div  className={style.suggestion}>
             <h1>
-               Don,t have an Account <span onClick={()=>navigate('/user/register')} style={{color: "Brown", marginLeft: "40px",cursor:"pointer"}}>Sign up </span> 
+               Don,t have an Account? <span onClick={()=>navigate('/user/register')} style={{color: "Brown", marginLeft: "40px",cursor:"pointer"}}>Sign up </span> 
             </h1>
            </div>
            
