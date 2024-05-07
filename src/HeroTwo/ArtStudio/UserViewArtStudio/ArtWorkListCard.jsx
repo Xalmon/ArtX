@@ -4,7 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import style from "./index.module.css";
 import image from "../../../assets/images/boy.png"
-import LocalAtmIcon from '@mui/icons-material/LocalAtm'
+
 
 
 const ArtWorkListCard = () => {

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import style from './index.module.css'
 import image from "../../assets/images/structures.png"
 import { Field, Form, Formik } from 'formik'
-import { Box, Button, TextField, Typography,InputAdornment,IconButton } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import Validation from "../../validation/validation"
+// import Validation from "../../validation/validation"
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
 import { registerUser } from '../../component/state/Authentication/Action'

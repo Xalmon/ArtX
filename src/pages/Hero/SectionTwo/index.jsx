@@ -8,7 +8,7 @@ const SectionTwo = () => {
     <div className={style.main}>
       
         <div>
-        <Button sx={{mt:5,fontSize:"4.5rem",backgroundColor:"white", width:"500px",borderRadius:"20px",border:"4px solid rgb(68, 71, 70)",boxShadow: "none",fontWeight:"1000",color: "rgb(68, 71, 70)",padding:"5px 5px ",fontFamily:"Georgia, serif",marginLeft:"40%",backgroundColor:"rgb(242, 242, 242)"}} fullWidth type='submit' variant='contained'>Gallery</Button>
+        <Button sx={{mt:5,fontSize:"4.5rem",backgroundColor:"white", width:"500px",borderRadius:"20px",border:"4px solid rgb(68, 71, 70)",boxShadow: "none",fontWeight:"1000",color: "rgb(68, 71, 70)",padding:"5px 5px ",fontFamily:"Georgia, serif",marginLeft:"40%"}} fullWidth type='submit' variant='contained'>Gallery</Button>
         </div>
         <div className={style.contain}>
           <div>

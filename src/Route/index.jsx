@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import Layout from '../Layout'
 import LandingPage from '../LandingPage'
 import RegisterPage from '../pages/RegisterPage'
@@ -13,6 +13,7 @@ import SideBars from '../dashBoard/ArtstudioDashboard/SideBar'
 import IconSideBars from '../dashBoard/ArtstudioDashboard/IconSideBars'
 import IconSideBar from '../dashBoard/UserDashBoard/IconSideBar'
 import ArtStudioDetails from '../HeroTwo/ArtStudio/UserViewArtStudio/ArtStudioDetails'
+import Cart from '../component/Cart/Cart'
 
 
 
@@ -94,6 +95,10 @@ export const Routes = [
                 path: "/artStudioDetails",
                 element: <ArtStudioDetails/>
             },
+            {
+                path: "/cart",
+                element: <Cart/>
+            }
 
 
           

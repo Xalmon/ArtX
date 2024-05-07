@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import style from './index.module.css'
 import image from "../../assets/images/naked.png"
-import { Field, Form, Formik } from 'formik'
-import { Box, Button, TextField, Typography,InputAdornment,IconButton } from '@mui/material'
-import { Password, Visibility, VisibilityOff } from '@mui/icons-material';
-import Validation from "../../validation/validation"
+import { Form, Formik } from 'formik'
+import { Button, IconButton } from '@mui/material'
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
 import { loginUser } from '../../component/state/Authentication/Action'

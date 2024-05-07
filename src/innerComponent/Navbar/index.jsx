@@ -1,13 +1,12 @@
 import React from 'react'
 import style from "./index.module.css"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {Button } from '@mui/material'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { IconButton, Avatar, Badge  } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
 
 const Navbar = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   return (
     <div>
     <div className={style.main}>
