@@ -4,10 +4,27 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import style from "./index.module.css";
 import image from "../../../assets/images/boy.png"
+import {useDispatch,useSelector} from "react-redux"
+import { addItemToCart } from '../../../component/state/Cart/Action';
 
 
 
-const ArtWorkListCard = () => {
+const ArtWorkListCard = ({item}) => {
+
+  const dispatch = useDispatch()
+
+  const handleAddItemToCart = (e) =>{
+    e.preventDefault()
+    const reqData = {
+      token:localStorage.getItem("jwt"),
+     cartItem:{
+      artworkId:item.id,
+      quantity:1
+     }
+    };
+    dispatch(addItemToCart(reqData))
+    console.log("the cart data: ",reqData)
+  }
   return (
     <Accordion style={{backgroundColor:"white"}} >
     <AccordionSummary
@@ -17,17 +34,17 @@ const ArtWorkListCard = () => {
     >
      <div className={style.accordion}>
        <div style={{display:"flex",alignItems:"center"}}>
-         <img style={{with:"200px",height:"800px"}} src={image} alt="" />
+         <img style={{with:"200px",height:"800px"}} src={item.images[0]} alt="" />
          <div className={style.details}>
              <p style={{fontSize:"3.0rem",fontWeight:"1000"}}>
               
-               Name: <span>Work Of Art</span> 
+               Name: <span>{item.name}</span> 
              </p>
              <p>
-               Price: <span>₦</span><span>25000</span> 
+               Price: <span>₦</span><span>{item.price}</span> 
              </p>
              <p>
-              Genre: <span>Art painting</span>
+              Genre: <span>{item.genre.genreName}</span>
              </p>
              
          </div>
@@ -35,13 +52,15 @@ const ArtWorkListCard = () => {
      </div>
     </AccordionSummary>
     <AccordionDetails>
+      <form onSubmit={handleAddItemToCart}> 
       <p style={{color:"rgb(68, 71, 70)",fontWeight:"1000"}}>ARTWORK DESCRIPTION</p>
-     <h3 style={{color:"rgb(68, 71, 70)"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel magna nec massa mattis semper. Sed commodo urna vel enim suscipit, at ultricies velit tempus. Duis et fermentum lorem. Proin ut arcu tellus. Integer quis ex eget nisl iaculis eleifend. Maecenas rhoncus urna ac nunc ultrices, vel malesuada justo pellentesque. Vivamus consequat felis non quam aliquet, ac cursus ligula lobortis. Sed at metus non elit iaculis fringilla. Suspendisse potenti. Ut nec ante in lorem dictum auctor eget eget nunc. Vivamus eu velit a nisl condimentum pellentesque. Sed at turpis nec nulla dapibus mattis. Cras eu mauris vitae dolor rhoncus auctor. Suspendisse potenti. Donec interdum, ligula id venenatis molestie, velit mauris dictu </h3> 
+     <h3 style={{color:"rgb(68, 71, 70)"}}>{item.description} </h3> 
      <div style={{marginTop:"80px"}}>
       <Button sx={{backgroundColor:"rgb(68, 71, 70)",color:"white",fontSize:"2.0rem",padding:"20px"}} variant='contained' disabled={false} type="submit">
             {true?"Add to Cart":"Out of Stock"}
       </Button>
      </div>
+     </form>
     </AccordionDetails>
   </Accordion>
   )

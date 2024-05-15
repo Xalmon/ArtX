@@ -8,6 +8,8 @@ import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt"
 import Box from '@mui/material/Box';
 import { ErrorMessage, Field, Formik,Form } from 'formik'
 import * as Yup from "yup"
+import {useSelector,useDispatch} from "react-redux";
+import { createOrder } from '../state/Order/Action'
 
 
 const styles = {
@@ -47,31 +49,56 @@ const styles = {
 
 
 
-const items = [1,1,1]
-const Cart = () => {
-    const createOrderUsingSelectedAddress=()=>{
+// const items = [1,1,1]
 
-    }
+
+
+const Cart = () => {
+    const {cart,auth,order} = useSelector(store=>store)
+  
+    const createOrderUsingSelectedAddress=()=>{ }
+    const dispatch = useDispatch()
+   
 const handleOpenAddressModal=()=>{
     setOpen(true);
 
 }
 const [open, setOpen] = React.useState(false);
 
+
 const handleClose = () => setOpen(false);
 
 const handleSubmit = (values) =>{
+  const data={
+    jwt:localStorage.getItem("jwt"),
+    order:{
+      artStudioId:cart.cartItems[0].artwork?.artStudio?.id
+      ,
+      deliveryAddress:{
+        firstName:auth.user?.firstName,
+        streetAddress:values.streetAddress,
+        city:values.city,
+        stateProvince:values.stateProvince,
+        postalCode:values.postalCode,
+        country:values.country
+
+      }
+    }
+  }
+  dispatch(createOrder(data))
+
   console.log("value: ",values)
-
+  console.log("the data order",data)
 }
-
+   console.log("my item: ",cart)
+   console.log("my order: ",order)
   return (
     <div className={style.main}>
         <div>
         <main className='name lg:flex justify-between'>
             <section id={style.sec} className='sec lg:w-[30%] space-y-6 lg:min-h-screen pt-10'>
-           {items.map((item)=>(
-           <CartItem/>
+           {cart.cartItems.map((item)=>(
+           <CartItem item={item}/>
            ))}
             <Divider  style={{marginTop:"30px",fontSize:"5.5rem",fontWeight:"1000",height:"50px"}}/>
             <div className='bill px-5 text-3xl'>
@@ -81,7 +108,7 @@ const handleSubmit = (values) =>{
               <div className='space-y-3'>
                <div className='flex justify-between text-gray-600'>
                   <p>Item Total</p>
-                  <p>₦<span>66000</span></p>
+                  <p>₦<span>{cart.cart?.total}</span></p>
                </div>
                <div className='flex justify-between text-gray-600'>
                   <p>Delivery Fee</p>
@@ -95,7 +122,7 @@ const handleSubmit = (values) =>{
               </div>
               <div className='flex justify-between text-gray-600 mt-6'>
               <p>Total Pay</p>
-                  <p>₦<span>5000</span></p>
+                  <p>₦<span>{cart.cart?.total + 2000 + 3000}</span></p>
               </div>
             </div>
             </section>

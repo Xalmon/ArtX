@@ -1,4 +1,4 @@
-import { Favorite } from "@mui/icons-material"
+
 import * as actions from './ActionType'
 import { isPresentInFavorites } from "../../config/logic"
 
@@ -22,7 +22,18 @@ export const authReducer=(state=initialState,action)=>{
             return {...state,isLoading:true,error:null,success:null}
         case actions.REGISTER_SUCCESS:
         case actions.LOGIN_SUCCESS:
-            return {...state,isLoading:false,jwt:action.payload,success:"Register Success"}
+            return {...state,
+                isLoading:false,
+                jwt:action.payload,
+                success:"Register Success"};
+        
+        case actions.GET_USER_SUCCESS:
+            return {...state,
+                isLoading:false,
+                user:action.payload,
+                favorites:action.payload.favorites,
+                };    
+
         case actions.ADD_TO_FAVORITE_SUCCESS:
             return{...state,
                 isLoading:false,
@@ -31,6 +42,9 @@ export const authReducer=(state=initialState,action)=>{
                 ? state.favorites.filter((item)=>item.id!==action.payload.id)
                 :[action.payload,...state.favorites]
             }
+            case actions.LOGOUT:
+                return initialState;
+                
             case actions.REGISTER_FAILURE:
             case actions.LOGIN_FAILURE:
             case actions.GET_USER_FAILURE:

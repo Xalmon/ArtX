@@ -1,10 +1,27 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import style from "./index.module.css"
 import InnerSectionTwo from '../InnerSectionTwo'
 import ArtStudioList from '../ArtStudio/ArtStudioList'
+import {useDispatch,useSelector} from "react-redux"
+import { getAllArtstudios } from '../../component/state/ArtStudio/Action'
 
-const artStudio = [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+// import {useNavigate} from "react-router-dom";
+
+// const artStudios = [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 const InnerSection = () => {
+       const dispatch = useDispatch()
+       const jwt = localStorage.getItem("jwt")
+       const {artStudio} = useSelector(store=>store)
+      //  const navigate = useNavigate()
+
+       console.log("The artstudios: ", artStudio)
+
+       useEffect(()=>{
+        dispatch(getAllArtstudios(jwt))
+       
+       },[])
+
+      
   return (
     <div className={style.main}>
         <section className={style.banner}>
@@ -27,7 +44,7 @@ const InnerSection = () => {
           </h1>
           <div className={style.artStudio}>
             {
-              artStudio.map((item)=><ArtStudioList/>)
+              artStudio.artStudios.map((item)=><ArtStudioList item={item}/>)
             }
           </div>
         </section>

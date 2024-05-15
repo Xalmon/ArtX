@@ -1,10 +1,13 @@
 import React from 'react'
 import style from "./Main.module.css"
 import EventCard from './EventCard'
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 
 const Event = () => {
-    
+  const navigate = useNavigate()
+  const {auth,cart} = useSelector(store=>store)
     
   return (
     <div id={style.main} className='flex  px-5 flex-wrap gap-5 min-h-[85.5vh] justify-center '>

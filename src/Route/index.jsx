@@ -14,6 +14,8 @@ import IconSideBars from '../dashBoard/ArtstudioDashboard/IconSideBars'
 import IconSideBar from '../dashBoard/UserDashBoard/IconSideBar'
 import ArtStudioDetails from '../HeroTwo/ArtStudio/UserViewArtStudio/ArtStudioDetails'
 import Cart from '../component/Cart/Cart'
+import CreateArtStudioForm from '../pages/CreateArtStudioForm/CreateArtStudioForm'
+import CreateArtwork from '../pages/CreateArtwork/CreateArtwork'
 
 
 
@@ -63,6 +65,14 @@ export const Routes = [
                 path: "/user/login",
                 element: <LoginPage/>,
 
+            },
+            {
+                path:"/user/form",
+                element: <CreateArtStudioForm/>
+            },
+            {
+                path:"/user/createArtwork",
+                element: <CreateArtwork/>
             }
 
 
@@ -84,7 +94,7 @@ export const Routes = [
             },
 
             {
-                path: "/artStudioDashboard",
+                path: "/artStudioDashboard/*",
                 element: <SideBars/>
             },
             {
@@ -92,13 +102,14 @@ export const Routes = [
                 element: <IconSideBars/>
             },
             {
-                path: "/artStudioDetails",
+                path: "/artStudioDetails/:city/:businessName/:id",
                 element: <ArtStudioDetails/>
             },
             {
                 path: "/cart",
                 element: <Cart/>
-            }
+            },
+           
 
 
           

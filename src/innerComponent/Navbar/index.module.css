@@ -38,6 +38,9 @@
     align-items: center;
     gap: 9%;
     text-align: center;
+    z-index: "150px";
+
+
    
 }
 .art{
@@ -60,7 +63,7 @@
 
 }
 .dash{
-    margin-top: 40px;
+    margin-top: 50px;
     font-weight: 1000;
     color: rgb(68, 71, 70);
     font-size: 30px;

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import style from "./index.module.css"
 import {Grid} from '@mui/material'
-import image from '../../../assets/images/first.jpg'
-import image2 from '../../../assets/images/second.jpg'
-import image3 from '../../../assets/images/third.jpg'
+// import image from '../../../assets/images/first.jpg'
+// import image2 from '../../../assets/images/second.jpg'
+// import image3 from '../../../assets/images/third.jpg'
 import Modal from './index.jsx'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
@@ -14,32 +14,65 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import ArtWorkListCard from './ArtWorkListCard.jsx'
+import {useNavigate,useParams} from "react-router-dom";
+import {useDispatch,useSelector} from "react-redux"
+import { getArtstudioById } from '../../../component/state/ArtStudio/Action.js'
+import { getArtStudioGenre } from '../../../component/state/ArtStudio/Action.js'
+import { getArtworkByArtStudioId } from '../../../component/state/Artwork/Action.js'
 
 
 
 
 
-const Categories=[
-  "Sculpture",
-  "Pencil Drawing",
-  "Pen Drawing",
-  "Paint Drawing",
-  "Glass Drawing"
+// const Categories=[
+//   "Sculpture",
+//   "Pencil Drawing",
+//   "Pen Drawing",
+//   "Paint Drawing",
+//   "Glass Drawing"
 
-]
+// ]
 const ArtStudioDetails = () => {
 
-  const [categories, setCategories] = useState("all");
-  const handleFilter = (e)=>{
-    console.log(e.target.value)
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt")
+  const {auth,artStudio,artWork} = useSelector(store=>store)
+  const [selectedCategory, setSelectedCategory] = useState("")
+
+
+  const { city, businessName, id } = useParams();
+
+  
+
+  // const [categories, setCategories] = useState("all");
+  
+  const handleFilter = (e,value)=>{
+    setSelectedCategory(value)
+    console.log("THE FILTER: ",e.target.value,e.target.name,value)
   }
 
-  const artworks = [1,1,1,1,1,1]
+  useEffect(()=>{
+    dispatch(getArtstudioById({jwt,artStudioId:id}))
+    dispatch(getArtStudioGenre({jwt,artStudioId:id}))
+   
+  },[])
+
+  useEffect(()=>{
+    dispatch(getArtworkByArtStudioId({jwt,artStudioId:id,artworkGenre:selectedCategory,}))
+  },[selectedCategory])
+
+  console.log("My ArtStudio", artStudio)
+  console.log("All the genres", artStudio.genres)
+  console.log("My list Of Artworks", artWork)
+  console.log("selected items:", artWork.artworkItems)
+
+  // const artworks = [1,1,1,1,1,1]
 
   const allImage = [
-    image,
-    image2,
-    image3
+    artStudio.artStudio?.images[0],
+    artStudio.artStudio?.images[1],
+    artStudio.artStudio?.images[2],
   ]
   return (
     <div id={style.main}>
@@ -58,7 +91,7 @@ const ArtStudioDetails = () => {
         </div>
         <div className={style.name}>
             <h1 className={style.font}>
-            ART WONDER 
+           {businessName}
             </h1>
             <div className={style.det}>
             <div style={{display:"flex",padding:"10px"}}>
@@ -67,7 +100,7 @@ const ArtStudioDetails = () => {
             <p style={{color:"rgb(68, 71, 70)",fontSize: "2.0rem",fontWeight:"1000"}}> DESCRIPTION:</p> 
             <p style={{color:"rgb(68, 71, 70)",textAlign:"center",marginLeft:"10px",fontSize: "2.0rem"}}>
       
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum ac velit sodales, in lacinia purus laoreet. Nulla facilisi. Maecenas auctor nibh vitae leo dictum.
+            {artStudio.artStudio?.description}
             </p>
             </div>
             <div style={{display:"flex",padding:"10px"}}>
@@ -76,7 +109,7 @@ const ArtStudioDetails = () => {
             <p style={{color:"rgb(68, 71, 70)",fontSize: "2.0rem",fontWeight:"1000"}}> LOCATION:</p> 
             <p style={{color:"rgb(68, 71, 70)",textAlign:"center",marginLeft:"10px",fontSize: "2.0rem"}}>
       
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ipsum ac velit sodales.
+            {artStudio.artStudio?.address.streetAddress} <span className='city ml-3'>{city}</span> <span className='city ml-3'>{artStudio.artStudio?.address.stateProvince}</span><span className='city ml-3'>{artStudio.artStudio?.address.country}</span>
             </p>
             </div>
             <div style={{display:"flex",padding:"10px"}}>
@@ -85,7 +118,8 @@ const ArtStudioDetails = () => {
             <p style={{color:"rgb(68, 71, 70)",fontSize: "2.0rem",fontWeight:"1000"}}> OPENING HOURS:</p> 
             <p style={{color:"rgb(68, 71, 70)",textAlign:"center",marginLeft:"10px",fontSize: "2.0rem"}}>
       
-             Mon-Sun: 9:00 AM - 9:00 PM (Today)
+            {artStudio.artStudio?.openingHours}
+
             </p>
             </div>
             </div>
@@ -102,17 +136,21 @@ const ArtStudioDetails = () => {
               <div style={{marginLeft:"100px"}}>
                 <Typography variant='h5' sx={{paddingBottom:"1rem",fontSize:"2.5rem",fontWeight:"1000",color:"rgb(68, 71, 70)"}}>
 
-                CATEGORY
+                GENRES
                 </Typography>
                 <FormControl className={style.form} component={"fieldset"}>
-                  <RadioGroup onChange={handleFilter} name='categories' value={categories}>
-                      {Categories.map((item) => (
+                  <RadioGroup 
+                  onChange={handleFilter} 
+                  name='artwork_genre' 
+                  value={selectedCategory}
+                  >
+                      {artStudio.genres.map((item) => (
                        
                         <FormControlLabel 
-                        key={item}
-                        value={item}
+                        key={item.genreName}
+                        value={item.genreName}
                         control={<Radio/>}
-                        label={<span style={{ fontSize: '2rem',fontWeight:"1000",color:"rgb(68, 71, 70)" }}>{item}</span>}
+                        label={<span style={{ fontSize: '2rem',fontWeight:"1000",color:"rgb(68, 71, 70)" }}>{item.genreName }</span>}
                        
                         />
                         
@@ -125,7 +163,7 @@ const ArtStudioDetails = () => {
           </div>
           <div className={style.divs}>
             <p style={{fontWeight:"1000",color:"rgb(68, 71, 70)"}}>ARTWORKS</p>
-         {artworks.map((item)=><ArtWorkListCard/>)}
+         {artWork.artworkItems.map((item)=><ArtWorkListCard item={item}/>)}
          </div>
        </section>
         </div>

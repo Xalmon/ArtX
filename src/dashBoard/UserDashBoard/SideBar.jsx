@@ -6,13 +6,23 @@ import OrderContent from "../CollectorSidebarList/OrderContent.jsx"
 import ProfilePage from '../../pages/CollectorProfile/ProfilePage.jsx';
 import Favorites from '../CollectorSidebarList/Favorites.jsx';
 import Event from '../CollectorSidebarList/Event.jsx';
+import Address from '../CollectorSidebarList/Address.jsx';
+import Payment from '../CollectorSidebarList/Payment.jsx';
+import Notification from '../CollectorSidebarList/Notification.jsx';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../component/state/Authentication/Action.js';
+import {useSelector} from "react-redux";
 
-// import { Drawer } from '@mui/material'
+
+
 
 
 
 const SideBar = () => {
+    const {auth} = useSelector(store=>store)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    
 
     const [selectedContent, setSelectedContent] = useState(null);
 
@@ -20,9 +30,15 @@ const SideBar = () => {
         setSelectedContent(content);
     };
 
+    const handleNavigate = () => {
+        dispatch(logOut())
+        navigate("/")
+
+    }
+
   return (
     <div>
-         {selectedContent === null && ( // Display "Hello" only when no sidebar content is selected
+         {selectedContent === null && (
                 <div >
                     <ProfilePage/>
                 </div>
@@ -36,7 +52,7 @@ const SideBar = () => {
             HELLO,
         </h1>
         <p>
-            Michael
+        {auth.user?.firstName.toUpperCase()}
         </p>
         <h2>
             Welcome to your dashboard
@@ -54,17 +70,17 @@ const SideBar = () => {
             </a>
         </li>
         <li className={style.sidebar_list_item}>
-            <a href="address" className={style.a}>
+            <a href="address" onClick={(e) => { e.preventDefault(); handleItemClick('address'); }}  className={style.a}>
                 < BsGeoAlt className={style.icon}/>  Address
             </a>
         </li>
         <li className={style.sidebar_list_item}>
-            <a href="payment" className={style.a}>
+            <a href="payment" onClick={(e) => { e.preventDefault(); handleItemClick('payment'); }}  className={style.a}>
                 < BsCreditCard className={style.icon}/>  Payment
             </a>
         </li>
         <li className={style.sidebar_list_item}>
-            <a href="notification" className={style.a}>
+            <a href="notification" onClick={(e) => { e.preventDefault(); handleItemClick('notification'); }}  className={style.a}>
                 < BsBell className={style.icon}/>  Notification
             </a>
         </li>
@@ -75,8 +91,8 @@ const SideBar = () => {
         </li>
 
     </ul>
-    <div className={style.log}>
-       <BsBoxArrowInLeft  className={style.icon}/> Logout
+    <div type='click' onClick={handleNavigate} className={style.log}>
+       <BsBoxArrowInLeft   className={style.icon}/> Logout
     </div>
     
 </aside>
@@ -84,6 +100,9 @@ const SideBar = () => {
                 {selectedContent === 'orders' && <OrderContent />}
                 {selectedContent === 'favorites' && <Favorites/>}
                 {selectedContent === 'event' && <Event/>}
+                {selectedContent === 'address' && <Address/>}
+                {selectedContent === 'payment' && <Payment/>}
+                {selectedContent === 'notification' && <Notification/>}
             </div>
 </div>
   )

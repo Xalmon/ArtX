@@ -9,10 +9,10 @@ export const registerUser = (reqData)=> async(dispatch)=>{
         const {data} = await axios.post(`${API_URL}/auth/signup`,reqData.userData)
         if(data.jwt)localStorage.setItem("jwt",data.jwt);
         if(data.role === "ROLE_ARTIST_OWNER"){
-            reqData.navigate("/artStudioDetails")
+            reqData.navigate("/user/form")
         }
         else{
-            reqData.navigate("/")
+            reqData.navigate("/inner")
         }
         dispatch({type:actions.REGISTER_SUCCESS,payload:data.jwt});
         console.log("Register Successful",data)
@@ -30,10 +30,10 @@ export const loginUser = (reqData)=> async(dispatch)=>{
         const {data} = await axios.post(`${API_URL}/auth/signIn`,reqData.userData)
         if(data.jwt)localStorage.setItem("jwt",data.jwt);
         if(data.user === "ROLE_ARTIST_OWNER"){
-            reqData.navigate("/artStudioDetails")
+            reqData.navigate("/inner")
         }
         else{
-            reqData.navigate("/")
+            reqData.navigate("/inner")
         }
         dispatch({type:actions.LOGIN_SUCCESS,payload:data.jwt});
         console.log("Login successful",data)
@@ -65,8 +65,7 @@ export const getUser = (jwt)=> async(dispatch)=>{
 export const addToFavorite = ({jwt,artStudioId})=> async(dispatch)=>{
     dispatch({type:actions.ADD_TO_FAVORITE_REQUEST})
     try{
-        const {data} = await api.put(`/api/artStudio/${artStudioId}/
-        add-favorites`,{},{
+        const {data} = await api.put(`/api/artStudio/${artStudioId}/add-favorites`,{},{
             headers:{
                 Authorization:`Bearer ${jwt}`
             }
@@ -82,7 +81,7 @@ export const addToFavorite = ({jwt,artStudioId})=> async(dispatch)=>{
 }
 
 export const logOut = ()=> async(dispatch)=>{
-    dispatch({type:actions.ADD_TO_FAVORITE_REQUEST})
+   
     try{
         localStorage.clear();
         dispatch({type:actions.LOGOUT})
