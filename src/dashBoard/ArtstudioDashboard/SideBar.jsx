@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { BsJustify ,BsUpload,BsClockHistory,BsBrush, BsGrid1X2Fill,BsInfoCircle, BsCalendarEvent, BsBagFill,BsBoxArrowInLeft } from 'react-icons/bs';
 import style from "./SideBar.module.css"
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,9 @@ import Artwork from '../ArtSudioSideBarList.jsx/Artwork.jsx';
 import ArtworkCategory from '../ArtSudioSideBarList.jsx/ArtworkCategory.jsx';
 import ArtStudioDetails from '../ArtSudioSideBarList.jsx/ArtStudioDetails.jsx';
 import CreateArtStudioForm from '../../pages/CreateArtStudioForm/CreateArtStudioForm.jsx';
+import { getArtStudioGenre, getArtstudioById } from '../../component/state/ArtStudio/Action.js';
+import { getArtworkByArtStudioId } from '../../component/state/Artwork/Action.js';
+import { getArtStudiosOrder } from '../../component/state/ArtStudioOrder/Action.js';
 
 
 
@@ -19,8 +22,10 @@ import CreateArtStudioForm from '../../pages/CreateArtStudioForm/CreateArtStudio
 const SideBar = () => {
 
     const {auth,artStudio} = useSelector(store=>store)
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const jwt = localStorage.getItem("jwt")
 
     const [selectedContent, setSelectedContent] = useState(null);
 
@@ -33,6 +38,14 @@ const SideBar = () => {
         navigate("/")
 
     }
+
+    // useEffect(()=>{
+    //     dispatch(getArtStudioGenre({jwt,artStudioId:artStudio.usersArtStudio?.id}));
+        
+    //     dispatch(getArtStudiosOrder({
+    //         jwt,artStudioId:artStudio.usersArtStudio?.id
+    //     }))
+    // },[])
 
     console.log("user artstudio: ",artStudio.usersArtStudio)
 

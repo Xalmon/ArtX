@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import style from "./CreateArtwork.module.css"
 import { useFormik } from 'formik'
 import { Grid,CircularProgress,Button } from "@mui/material";
@@ -13,6 +13,10 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import {useSelector,useDispatch} from "react-redux"
+import { useNavigate } from "react-router-dom";
+import { getArtStudiosOrder } from '../../component/state/ArtStudioOrder/Action.js';
+import { createArtworkItem } from '../../component/state/Artwork/Action.js';
 
 const initialValues = {
     name:"",
@@ -26,11 +30,17 @@ const initialValues = {
 }
 
 const CreateArtwork = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const {auth,artStudio} = useSelector(store=>store)
+  const jwt = localStorage.getItem("jwt")
+
     const [uploadImage,setUploadImage] =useState(false)
     const formik = useFormik({
         initialValues,
         onSubmit: (values) =>{
-          values.artStudioId = 2
+          // values.artStudioId = artStudio.usersArtStudio.id;
+          dispatch(createArtworkItem({artworkData:values,jwt}))
           console.log("data---", values)
 
         }
@@ -166,9 +176,8 @@ const CreateArtwork = () => {
           placeholder='genre'
           sx={{height:"60px",width:"1200px",border:"3px solid black",marginLeft:"149px"}}
         >
-          <MenuItem sx={{color:"white"}}  value={10}>Ten</MenuItem>
-          <MenuItem sx={{color:"white"}}  value={20}>Twenty</MenuItem>
-          <MenuItem sx={{color:"white"}}  value={30}>Thirty</MenuItem>
+          {artStudio.genres?.map((item)=><MenuItem sx={{color:"white"}} key={item.id}  value={item}>{item?.genreName}</MenuItem>)}
+          
         </Select>
       </FormControl>
          </Grid>

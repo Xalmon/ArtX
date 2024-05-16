@@ -1,20 +1,27 @@
 import React,{useState} from 'react'
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import {useSelector,useDispatch} from "react-redux"
+import { createCategoryAction } from '../../component/state/ArtStudio/Action';
 
 
 const CreateArtworkCategory = () => {
+  const {auth,cart,artStudio} = useSelector(store=>store)
+  const dispatch = useDispatch()
     const [formData,setFormData] = useState({genreName:"",artStudioId:""})
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
         const data={
-            name:formData.genreName,
+            genreName:formData.genreName,
             artStudioId:{
                 id:1
             }
 
         }
-        
+      dispatch(createCategoryAction({
+        reqData:data,jwt:localStorage.getItem("jwt")
+      }))
       console.log(data)
     }
     const handleInputChange=(e)=>{

@@ -7,6 +7,8 @@ import { AddPhotoAlternate } from '@mui/icons-material';
 import { IconButton,TextField } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close"
 import { uploadImageToCloudinary } from '../util/UploadToCloudinary';
+import {useDispatch} from "react-redux";
+import { createArstudio } from '../../component/state/ArtStudio/Action';
 
 const initialValues = {
     businessName:"",
@@ -28,6 +30,8 @@ const initialValues = {
 }
 
 const CreateArtStudioForm = () => {
+    const dispatch = useDispatch();
+    const jwt = localStorage.getItem("jwt")
     const [uploadImage,setUploadImage] =useState(false)
     const formik = useFormik({
         initialValues,
@@ -56,6 +60,9 @@ const CreateArtStudioForm = () => {
 
           };
           console.log("data---", data)
+
+          dispatch(createArstudio({data,token:jwt}))
+
 
         }
     })
@@ -261,12 +268,12 @@ const CreateArtStudioForm = () => {
         <Grid item xs={12}>
           <TextField
           fullWidth
-          id="state"
-          name="state"
-          label="state"
+          id="stateProvince"
+          name="stateProvince"
+          label="stateProvince"
           variant="outlined"
           onChange={formik.handleChange}
-          value={formik.values.state}
+          value={formik.values.stateProvince}
           sx={{height:"60px",width:"590px",fontSize:"3.5rem",border:"2px solid black",}}
           placeholder='state'
 
@@ -403,7 +410,7 @@ const CreateArtStudioForm = () => {
         </div>
     </Grid>
    
-        <Button type='submit' variant='contained' sx={{fontSize:"2.0rem",marginTop:"20px", backgroundColor:"rgb(68, 71, 70)",color:"white",borderRadius:"10px"}}>
+        <Button  type='submit' variant='contained' sx={{fontSize:"2.0rem",marginTop:"20px", backgroundColor:"rgb(68, 71, 70)",color:"white",borderRadius:"10px"}}>
       Create ArtStudio
     </Button>
 

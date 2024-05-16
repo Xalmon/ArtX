@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Box,Card,CardHeader,Typography } from "@mui/material"
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -11,6 +11,12 @@ import CreateIcon from "@mui/icons-material/Create"
 import { IconButton } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import CreateArtworkCategory from '../../pages/CreateArtStudioForm/CreateArtworkCategory';
+import {useNavigate} from "react-router-dom"
+import {useSelector,useDispatch} from "react-redux";
+import { getArtStudiosOrder } from '../../component/state/ArtStudioOrder/Action.js';
+import { getArtStudioGenre} from '../../component/state/ArtStudio/Action.js';
+import { getAllArtstudios } from '../../component/state/ArtStudio/Action.js';
+
 
 
 const orders = [1,1,1,1];
@@ -29,6 +35,21 @@ const style = {
 
 
 const ArtworkCategoryTable = () => {
+  const navigate=useNavigate()
+  const dispatch = useDispatch()
+  const {artStudio} = useSelector(store=>store)
+  const jwt = localStorage.getItem("jwt")
+
+  useEffect(()=>{
+    
+    
+    dispatch(getArtStudioGenre({jwt,artStudioId:artStudio.usersArtStudio?.id}));
+    dispatch(getAllArtstudios(jwt))
+    dispatch(getArtStudiosOrder({
+        jwt,artStudioId:artStudio.usersArtStudio?.id
+    }))
+},[])
+console.log("artstudios:____", artStudio)
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -66,13 +87,13 @@ const ArtworkCategoryTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((row) => (
+              {artStudio.genres?.map((item) => (
                 <TableRow
-                  key={row.name}
+                  key={item.genreName}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 },backgroundColor:"rgb(242, 242, 242)",marginTop:"40px",fontSize:"4.5rem" }}
                 >
-                  <TableCell sx={{fontSize:"2.5rem"}}>{1}</TableCell>
-                  <TableCell  align='right' sx={{fontSize:"2.5rem"}}>{"Pencil Drawing"}</TableCell>       
+                  <TableCell sx={{fontSize:"2.5rem"}}>{item.id}</TableCell>
+                  <TableCell  align='right' sx={{fontSize:"2.5rem"}}>{item.genreName}</TableCell>       
                 </TableRow>
               ))}
             </TableBody>

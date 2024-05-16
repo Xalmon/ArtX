@@ -67,10 +67,6 @@ export const Routes = [
 
             },
             {
-                path:"/user/form",
-                element: <CreateArtStudioForm/>
-            },
-            {
                 path:"/user/createArtwork",
                 element: <CreateArtwork/>
             }
@@ -108,6 +104,10 @@ export const Routes = [
             {
                 path: "/cart",
                 element: <Cart/>
+            },
+            {
+                path:"/user/form",
+                element: <CreateArtStudioForm/>
             },
            
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Box,Card,CardHeader,Typography } from "@mui/material"
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -7,11 +7,33 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
+import {useSelector,useDispatch} from "react-redux";
+import { getArtStudiosOrder } from '../../component/state/ArtStudioOrder/Action.js';
+import { getArtStudioGenre} from '../../component/state/ArtStudio/Action.js';
+import { deleteArtworkItem, getArtworkByArtStudioId } from '../../component/state/Artwork/Action.js';
+import {  Avatar} from "@mui/material"
+import {useNavigate} from "react-router-dom"
+
 
 const orders = [1,1,1,1];
 
 
 const OrdersTable = () => {
+  const navigate=useNavigate()
+  const dispatch = useDispatch()
+  const {auth,artStudio,artWork,artStudiosOrder} = useSelector(store=>store)
+  const jwt = localStorage.getItem("jwt")
+
+
+        useEffect(()=>{
+          dispatch(getArtStudiosOrder({
+                jwt,
+                artStudioId:artStudio.usersArtStudio?.id
+              })) 
+          
+         },[])
+
+         console.log("the ordersArtstudio__", artStudiosOrder)
   return (
     <div>
         <Box>
@@ -38,19 +60,19 @@ const OrdersTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.map((row) => (
+          {artStudiosOrder.orders?.map((item) => (
             <TableRow
-              key={row.name}
+              key={item.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 },backgroundColor:"rgb(242, 242, 242)",marginTop:"40px",fontSize:"4.5rem" }}
             >
               <TableCell component="th" scope="row" sx={{fontSize:"2.5rem"}}>
-                {1}
+                {item.id}
               </TableCell>
               <TableCell align="right" sx={{fontSize:"2.5rem"}}>{"John"}</TableCell>
-              <TableCell align="right" sx={{fontSize:"2.5rem"}}>{"john@gmail.com"}</TableCell>
-              <TableCell align="right" sx={{fontSize:"2.5rem"}}>{"IMAGE"}</TableCell>
-              <TableCell align="right" sx={{fontSize:"2.5rem"}}>{34000}</TableCell>
-              <TableCell align="right" sx={{fontSize:"2.5rem"}}>{'love'}</TableCell>
+              <TableCell align="right" sx={{fontSize:"2.5rem"}}>{item.collector.email}</TableCell>
+              <TableCell align="right" sx={{fontSize:"2.5rem"}}></TableCell>
+              <TableCell align="right" sx={{fontSize:"2.5rem"}}></TableCell>
+              <TableCell align="right" sx={{fontSize:"2.5rem"}}></TableCell>
               <TableCell align="right" sx={{fontSize:"2.5rem"}}>{"PENDING"}</TableCell>
             </TableRow>
           ))}

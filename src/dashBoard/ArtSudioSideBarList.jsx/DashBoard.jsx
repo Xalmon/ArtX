@@ -1,9 +1,30 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import style from "./Style.module.css"
 import { BsUpload,BsClockHistory,BsBrush, BsBagFill } from 'react-icons/bs';
 import { BarChart, Bar,Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer , LineChart, Line} from 'recharts';
+import { getArtStudioGenre} from '../../component/state/ArtStudio/Action.js';
+import {useSelector,useDispatch} from "react-redux"
+import { useNavigate } from "react-router-dom";
+import { getArtStudiosOrder } from '../../component/state/ArtStudioOrder/Action.js';
 
 const DashBoard = () => {
+  const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {auth,artStudio} = useSelector(store=>store)
+    const jwt = localStorage.getItem("jwt")
+
+
+  useEffect(()=>{
+    
+   
+    dispatch(getArtStudioGenre({jwt,artStudioId:artStudio.usersArtStudio?.id}));
+    // dispatch(getArtworkByArtStudioId())
+    // dispatch(getArtstudioById())
+    dispatch(getArtStudiosOrder({
+        jwt,artStudioId:artStudio.usersArtStudio?.id
+    }))
+},[])
+
 
   const data = [
     {

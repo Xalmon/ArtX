@@ -22,12 +22,12 @@ export const updateOrderStatus = ({orderId, orderStatus, jwt}) => {
     }
 }
 
-export const getArstudiosOrder = ({artStudioId, orderStatus, jwt}) => {
+export const getArtStudiosOrder = ({artStudioId, orderStatus, jwt}) => {
     return async (dispatch) => {
         try {
             dispatch({type:actions.GET_ARTSTUDIOS_ORDER_REQUEST});
 
-            const {data} = await api.get( `/api/admin/order/artwork/${artStudioId}`,{
+            const {data} = await api.get( `/api/admin/order/artWork/${artStudioId}`,{
                 params: {order_status:orderStatus},
                 headers: {
                     Authorization: `Bearer ${jwt}`,

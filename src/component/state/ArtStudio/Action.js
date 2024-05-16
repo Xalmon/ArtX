@@ -169,11 +169,11 @@ export const getArtStudioGenre = ({jwt, artStudioId}) => {
     }
 
 
-export const createCategoryAction = ({regData, jwt}) => {
+export const createCategoryAction = ({reqData, jwt}) => {
     return async (dispatch) => {
         dispatch({type:actions.CREATE_GENRE_REQUEST});
         try{
-            const resp = await api.post(`/api/admin/genre`, regData,{
+            const resp = await api.post(`/api/admin/genre`, reqData,{
                 headers:{
                     Authorization: `Bearer ${jwt}`,
                  },  

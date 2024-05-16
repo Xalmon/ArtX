@@ -90,7 +90,7 @@ export const deleteArtworkItem = ({artworkId, jwt}) => {
         dispatch({type:actions.DELETE_ARTWORK_REQUEST});
         try {
             const {data} = await api.delete( `/api/admin/artwork/${artworkId}`,
-            {},
+           
             {
                 headers: {
                     Authorization: `Bearer ${jwt}`

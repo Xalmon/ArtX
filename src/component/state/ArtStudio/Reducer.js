@@ -18,7 +18,7 @@ export const artStudioReducer = (state = initialState, action) => {
         case actions.GET_ARTSTUDIO_BY_ID_REQUEST:
         case actions.GET_ARTSTUDIO_BY_USER_ID_REQUEST:
         case actions.CREATE_GENRE_REQUEST:
-        case actions.GET_ARTSUDIO_GENRE_REQUEST:
+        // case actions.GET_ARTSUDIO_GENRE_REQUEST:
             return {
                 ...state,
                 loading: true,
