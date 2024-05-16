@@ -54,7 +54,7 @@ const SideBar = () => {
         {selectedContent === null && (
                 <div >
                   {
-                //   !artStudio.usersArtStudio? <CreateArtStudioForm/>:
+                  !artStudio.usersArtStudio? <CreateArtStudioForm/>:
                   <DashBoard/>}
                 </div>
             )}
