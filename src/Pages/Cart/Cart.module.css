@@ -1,0 +1,221 @@
+.main {
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem; 
+    width: 600px;
+}
+
+.section {
+    display: flex; 
+    align-items: center; 
+}
+
+@media (min-width: 1024px) {
+    .section {
+        gap: 1.25rem; 
+    }
+}
+
+.img {
+    width: 10rem; 
+    height: 10rem; 
+    object-fit: cover; 
+}
+.second {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+    .second {
+        width: 70%; 
+}
+}
+.third {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+    width: 100%;
+}
+
+.third>*+* {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+@media (min-width: 1024px) {
+    .third {
+        margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+        margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+    }
+}
+
+.fourth {
+    display: flex; 
+    align-items: center; 
+}
+
+.fourth > * + * {
+    margin-left: 0.25rem; 
+}
+
+.number{
+    .number {
+        width: 1.25rem; 
+        height: 1.25rem; 
+        font-size: 1.75rem; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+    }
+}
+
+.list {
+    padding-top: 0.75rem; 
+}
+
+.list > * + * {
+    margin-left: 0.5rem;
+
+}
+
+.major {
+    display: flex; 
+    justify-content: space-between; 
+    flex-direction: column;
+}
+.fifth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 65%;
+}
+
+.six {
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.seven {
+    font-weight: 200; 
+    padding-top: 1.25rem; 
+    padding-bottom: 1.25rem; 
+    font-size: 2.0rem;
+}
+
+.eight > * + * {
+    margin-top: 0.75rem;
+}
+
+.nine {
+    display: flex; 
+    justify-content: space-between; 
+    color: black; 
+    width: 620px;
+    font-size: 2.0rem;
+
+}
+
+.ten {
+    display: flex; 
+    justify-content: space-between; 
+    color: black; 
+    width: 620px;
+    font-size: 2.0rem;
+}
+.eleven {
+    width: 70%;
+    display: flex; 
+    justify-content: center; 
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem; 
+    padding-bottom: 2.5rem; 
+    
+   
+}
+
+@media (min-width: 1024px) {
+    .eleven {
+        padding-bottom: 0; 
+    }
+}
+
+.text {
+    text-align: center; 
+    font-weight: 700; 
+    font-size: 2.9rem; 
+    padding-top: 2.5rem; 
+    padding-bottom: 2.5rem; 
+    position: relative;
+    bottom: 260%;
+    left: 33%;
+   
+  
+}
+
+address {
+    display: flex;
+    gap: 1.25rem;
+    width: 16rem;
+    padding: 1.25rem; 
+   
+}
+
+add > * + * {
+    margin-top: 0.75rem;
+}
+
+.add {
+    color: black;
+    background-color: burlywood;
+    border-radius: 10px;
+}
+
+.home {
+    font-weight: 700; 
+    font-size: 2.25rem;
+}
+
+.addresses {
+    display: flex; 
+    gap: 1.25rem; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    position: relative;
+    bottom: 250%;
+    left: 42%;
+   
+   
+    
+}
+
+.sectiontwo {
+    display: flex; 
+    gap: 1.25rem;
+    width: 23rem; 
+    padding: 1.25rem;
+    
+    
+}
+.fifthteen > * + * {
+    margin-top: 0.75rem;
+    
+}
+
+
+
+.sixteen {
+    font-weight: 700; 
+    font-size: 2.25rem; 
+    font-size: 1.8rem;
+   
+    
+}
+
+
+
+
+
+

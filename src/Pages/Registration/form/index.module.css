@@ -1,0 +1,119 @@
+   .container {
+    background: #000000;
+    padding: 100px 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .content {
+    /* background: linear-gradient(to left, black, white); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    padding: 30px;
+    border: 1px solid #ccc; 
+    border-radius: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .content > * {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+    
+.h1{
+  background-color: black;
+  color: #ffffff;
+}
+  
+  input,
+  textarea {
+    padding: 8px;
+    height: 30px;
+    width: 500px;
+    margin-bottom: 10px;
+    border: 2px solid #392f2a;
+    border-radius: 30px;
+    box-shadow: 3px 2px 5px #462a19;
+  }
+
+  textarea {
+    height: 70px;
+  }
+  
+  p {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+.successPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 2px solid #00cc00; 
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.registrationSuccessMessage {
+  color: #00cc00; 
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo p {
+  color: black; 
+  background-color: white;
+  display: inline-block;
+  padding: 1px 2px;
+  border: 2px solid black;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.logo p span {
+  color: white; 
+  background-color: black; 
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo p:first-child {
+  font-weight: bold; 
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon input,
+.inputWithIcon textarea {
+  padding-left: 40px; 
+}
+
+.inputWithIcon .icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+}

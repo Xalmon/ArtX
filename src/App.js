@@ -1,38 +1,25 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { Routes } from './Route';
-import {useRoutes} from "react-router-dom"
-import { DefaultTheme } from './Theme/DefaultTheme';
-import {CssBaseline, ThemeProvider } from '@mui/material';
+import { useRoutes } from 'react-router-dom';
+import {ROUTES} from './routes/index'
+import { useDispatch, useSelector } from 'react-redux';
+// import { store } from './State/Authentication/store';
 import { useEffect } from 'react';
-import {useDispatch,useSelector} from "react-redux"
-import { getUser } from './component/state/Authentication/Action';
-import { findCart } from './component/state/Cart/Action';
-import { getArstudioByUserId } from './component/state/ArtStudio/Action';
+import { getArtistProfile, getCollectorProfile } from './State/Authentication/Action';
 
 function App() {
-  const dispatch=useDispatch();
-  const jwt = localStorage.getItem("jwt")
+  const dispatch = useDispatch()
+  const id = localStorage.getItem("id")
+  const artistId = localStorage.getItem("artistId")
   const {auth} = useSelector(store=>store)
+  // useEffect(()=>{
+  //   dispatch(getCollectorProfile(auth.id || id))
+  // },[auth.id])
   useEffect(()=>{
-   dispatch(getUser(auth.jwt || jwt))
-
-   dispatch(findCart(jwt))
-  },[auth.jwt])
-
-  useEffect(()=>{
-    dispatch(getArstudioByUserId(jwt))
-
-  },[auth.user])
-
+    dispatch(getArtistProfile(auth.artistId || artistId))
+  },[auth.artistId])
   
-  
-  return (
-    <ThemeProvider theme={DefaultTheme}>
-      <CssBaseline/>
-     {useRoutes(Routes) }
-    </ThemeProvider>
-    )
+  return useRoutes(ROUTES)
 }
 
 export default App;

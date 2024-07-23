@@ -1,0 +1,78 @@
+.Profile_Main_Frame{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 95vh;
+}
+.Profile_Navbar_And_Body_Frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 95%;
+    border-style: solid;
+    border-width: 1px;
+}
+.Profile_Main_Body_Frame{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 90%;
+    border-style: solid;
+    border-width: 1px;
+    /* background: linear-gradient(to left, black, white); */
+}
+.Profile_Main_Body_Inner_Frame_1{
+    height: 90%;
+    width: 35%;
+
+}
+.Profile_Image_Frame{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+}
+.Profile_Image_Frame img{
+    width: 30vw;
+    height: 30vh;
+}
+.Profile_Image_Frame button{
+    width: 40%;
+    height: 5vh;
+}
+.User_Data_Frame{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 61%;
+    border-style: solid;
+    border-width: 1px;
+}
+.User_Data_Inner_Frame{
+   height: 95%;
+   width: 95%;
+}
+.User_Data_Inner_Frame label{
+    font-size: 30px;
+}
+.User_Data_Inner_Frame p{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 30px;
+    border-color: grey; 
+    height: 5vh;
+}

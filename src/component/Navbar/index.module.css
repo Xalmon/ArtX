@@ -1,86 +1,74 @@
-.logo p {
-    color: rgb(68, 71, 70); 
-    background-color: #ffffff;
-    display: inline-block;
-    padding: 4px 28px;
-    border: 4px solid rgb(68, 71, 70);
-    font-size: 25px;
-    border-radius: 10px;
-    font-size: 30px;
-    font-weight: 1000;
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    /* gap: 15%; */
+    align-items: center;
+    background: linear-gradient(to left, grey, pink);
+    position: sticky;
+    height: 120px;
+  top: 0;
 }
 
+.logo {
+    text-align: center;
+}
+
+.logo p {
+    color: black; 
+    background-color: white;
+    display: inline-block;
+    padding: 1px 2px;
+    border: 2px solid black;
+    font-size: 25px;
+    cursor: pointer;
+}
 
 .logo p span {
     color: white; 
-    background-color:rgb(68, 71, 70); 
-    font-size: 30px;
-
+    background-color: black; 
 }
 
-.logo{
-    margin-top: 30px;
-    margin-left: 80px;
-    
-}
-.contain h1{
-    color: rgb(68, 71, 70);
-    font-size: 30px;
-}
-.contain{
-    display: flex;
-    gap: 120px;
-    margin-top: 30px;
-    font-weight: 1000;
-}
-.main{
-    display: flex;
-    align-items: center;
-    gap: 10%;
+.logo {
     text-align: center;
-   
-   
-}
-.art{
-    font-size: 35px;
-    background-color: rgb(68, 71, 70);
-    color: white;
-    padding: 10px ;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding-left: 30px;
-}
-.exp{
-    font-size: 35px;
-    color:rgb(68, 71, 70);
-    padding: 10px ;
-    padding-right: 25px;
-    border: 3px solid rgb(68, 71, 70);
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-
+  }
+  
+.logo p:first-child {
+    font-weight: bold; 
 }
 
-.modal{
-    padding: 5px ;
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    justify-content: space-around;
+
+    > p {
+        cursor: pointer;
+    }
 }
-.head{
-    font-size: 50px;
+
+.btnDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cart{
+    color: #ffffff;
+    font-size: 300%; 
+}
+
+
+.card_icon {
+    font-size: 60%; 
+}
+
+.cart span{
     font-weight: bold;
-    color: black;
-   margin-top: 40px;
-
-}
-
-.click{
-    font-weight: bold;
-    color: rgb(68, 71, 70);;
-    font-size: 30px;
-    font-weight: 1000;
-    margin-top: 30px;
-
-}
-.image{
-    margin-left: 160px;
-    margin-top: 20px;
+    font-size: 50%;
 }

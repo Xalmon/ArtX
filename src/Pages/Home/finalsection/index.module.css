@@ -1,0 +1,32 @@
+.final{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.section1{
+    display:flex;
+    margin: 50px;
+}
+
+.section2{
+    display:flex;
+    /* margin: 50px; */
+    justify-content: space-evenly;
+}
+
+.One{
+    display: flex; 
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 20%;
+}
+
+.Two{
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 20%;
+}

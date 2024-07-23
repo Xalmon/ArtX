@@ -1,0 +1,37 @@
+.body{
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px
+}
+  
+.h1 {
+    color: #e8dfdf;
+    text-align: center;
+  }
+  
+.p {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+.li {
+    margin-bottom: 10px;
+  }
+  
+.li::before {
+    content: "• ";
+    color: #ffffff;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
